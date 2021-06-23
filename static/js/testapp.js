@@ -1,3 +1,4 @@
+
 // function to get data
 function getInfo(id) {
     // read the json file
@@ -10,9 +11,10 @@ function getInfo(id) {
 
         console.log(metadata);
 
-        // filter by id
-        // var result = metadata.filter(meta => meta._id.$oid.toString() === id)[0];
-
+        //filter by id
+        var result = metadata.filter(meta => meta._id["$oid"].toString() === "60c960daf161e35aa00b202b");
+        
+        console.log(result)
         // // select demographic panel to put data
         // var demographicInfo = d3.select("#sample-metadata");
         
@@ -26,7 +28,7 @@ function getInfo(id) {
     });
 }
 
-// // Creating function for plots
+// Creating function for plots
 // function getPlot(id) {
 //     // getting data from the json file
 //     d3.json("../data_collection/Beard_db_final.json").then((data)=> {
@@ -63,25 +65,25 @@ function getInfo(id) {
 //             orientation: "h",
 //         };
 
-// // Initializes the page with a default plot
-// function init() {
-//     // select dropdown menu 
-//     var dropdown = d3.select("#selDataset");
+// Initializes the page with a default plot
+function init() {
+    // select dropdown menu 
+    var dropdown = d3.select("#selDataset");
 
-//     // read the data 
-//     d3.json("../data_collection/Beard_db_final.json").then((data)=> {
-//         console.log(data)
+    // read the data 
+    d3.json("static/data_collection/Beard_db_final.json").then((data)=> {
+        console.log(data)
 
-//         // get the id data to the dropdwown menu
-//         data.names.forEach(function(name) {
-//             dropdown.append("option").text(name).property("value");
-//         });
+        // get the id data to the dropdwown menu
+        data.values.forEach(function(name) {
+            dropdown.append("option").text(name['achievement status']).property("value");
+        });
 
 //         // call functions to display the data and the plots
-//         getPlot(data.names[0]);
-//         getInfo(data.names[0]);
-//     });
-// }
+//         getPlot(data['achievement status'][0]);
+//         getInfo(data.values[31]['achievement status']);
+    });
+}
 getInfo();
 
-// init();
+init();
