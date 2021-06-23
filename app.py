@@ -24,5 +24,9 @@ def returndata():
     dict_db['values'] = test_list
     return json.loads(json_util.dumps(dict_db))
 
+@app.route("/tables")
+def table():
+    return render_template("table.html")
+
 if __name__ == "__main__":
     app.run(debug=True)

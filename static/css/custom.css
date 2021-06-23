@@ -1,0 +1,11 @@
+.jumbotron{
+    background-image: ;
+    background-size: cover;
+    height: 100%;}
+.jumbotron{
+    background: url('https://cdn.vox-cdn.com/thumbor/FJr14SoPmbTNOSU9xifYafhlKtg=/0x0:2721x2048/1200x800/filters:focal(1144x807:1578x1241)/cdn.vox-cdn.com/uploads/chorus_image/image/66751046/50547312.jpg.0.jpg') no-repeat center center; 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
