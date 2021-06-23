@@ -3,7 +3,7 @@ function getInfo(id) {
     // read the json file
     const url = "/api/data/all";
     
-    d3.json(url).then((data)=> {
+    d3.json("../data_collection/Beard_db_final.json").then((data)=> {
         
         // get the info for the demographic panel
         var metadata = data.metadata;
@@ -29,7 +29,7 @@ function getInfo(id) {
 // Creating function for plots
 function getPlot(id) {
     // getting data from the json file
-    d3.json(url).then((data)=> {
+    d3.json("../data_collection/Beard_db_final.json").then((data)=> {
         console.log(data)
   
            
@@ -69,7 +69,7 @@ function init() {
     var dropdown = d3.select("#selDataset");
 
     // read the data 
-    d3.json(url).then((data)=> {
+    d3.json("../data_collection/Beard_db_final.json").then((data)=> {
         console.log(data)
 
         // get the id data to the dropdwown menu
