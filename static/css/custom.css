@@ -1,7 +1,4 @@
-.jumbotron{
-    background-image: url('https://cdn.vox-cdn.com/thumbor/FJr14SoPmbTNOSU9xifYafhlKtg=/0x0:2721x2048/1200x800/filters:focal(1144x807:1578x1241)/cdn.vox-cdn.com/uploads/chorus_image/image/66751046/50547312.jpg.0.jpg');
-    background-size: contain;
-    height: 100%;}
+
 .jumbotron{
     background: url('https://jbf-media.s3.amazonaws.com/production/page/2018/7/16/071618_JBA_SEAL_WINNER_300.png') no-repeat left top; 
     -webkit-background-size: 100% 100%;
@@ -54,4 +51,8 @@ button:hover, .btn-group-lg>.btn, .btn-lg {
     font-size: 18px;
     line-height: 1.3333333;
     border-radius: 66px;
+}
+
+input {
+    color: black;
 }
