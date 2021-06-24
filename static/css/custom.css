@@ -28,3 +28,30 @@ button, input, optgroup, select, textarea {
     font-family: inherit;
     color: inherit;
 }
+button:hover {
+    border-color: white;
+    background-color: black;
+}
+
+button:hover, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    font-style: inherit;
+    font-variant-ligatures: inherit;
+    font-variant-caps: inherit;
+    font-variant-numeric: inherit;
+    font-variant-east-asian: inherit;
+    font-weight: 600;
+    font-stretch: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    color: white;
+}
+
+button:hover, .btn-group-lg>.btn, .btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 66px;
+}
