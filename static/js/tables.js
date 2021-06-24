@@ -1,7 +1,7 @@
 
 // ('your-custom-id').mdbDropSearch();
 const searchInputDropdown = document.getElementById('search-input-dropdown');
-const dropdownOptions = document.querySelectorAll('dropdown-item');
+const dropdownOptions = document.querySelectorAll('a.dropdown-item');
 
 searchInputDropdown.addEventListener('input', () => {
   const filter = searchInputDropdown.value.toLowerCase();
