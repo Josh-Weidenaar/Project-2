@@ -9,7 +9,7 @@ function getPlot(status) {
     var masc = [] 
     var nullielist = []
     var _3rdGenderList = []  
-    d3.json("static/data_collection/Beard_db_final.json").then((data)=> {
+    d3.json("/api/data/all").then((data)=> {
         if (status !== "All") {
             
             currentStatus = data.values.filter(achievementStat => achievementStat['achievement status'] == status)
@@ -132,7 +132,7 @@ function init() {
     // select dropdown menu 
     var dropdown = d3.select("#selDataset");
  
-    d3.json("static/data_collection/Beard_db_final.json").then((data)=> {
+    d3.json("/api/data/all").then((data)=> {
         // console.log("this dat")
         // console.log(data)
         // console.log(data.values[15].gender);
