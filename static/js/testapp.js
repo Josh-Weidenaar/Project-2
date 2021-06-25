@@ -10,14 +10,69 @@ function getPlot(status) {
     var nullielist = []
     var _3rdGenderList = []  
     d3.json("static/data_collection/Beard_db_final.json").then((data)=> {
+        if (status !== "All") {
+            
+            currentStatus = data.values.filter(achievementStat => achievementStat['achievement status'] == status)
+                years.forEach(date => {
+                    let female = 0;
+                    let male = 0;
+                    let nullie = 0;
+                    let _3rdGender = 0;
+                    yearArray = currentStatus.filter(i => i.year == date)
+                    yearArray.forEach(j => {
+                        var gender = j.gender;
+                        var year = j.year;
 
-        currentStatus = data.values.filter(achievementStat => achievementStat['achievement status'] == status)
+                        if (gender === "Female"){
+                            female += 1;
+                        } else if (gender === "Male"){
+                            male += 1; 
+                        } else if (gender === null){
+                            nullie += 1;
+                        } else {
+                            _3rdGender += 1;
+                        }
+                        });
+                    masc.push(male);
+                    femme.push(female);
+                    nullielist.push(nullie);
+                    _3rdGenderList.push(_3rdGender);
+                    // console.log("femme");
+                    // console.log(femme);
+                    // console.log("masc");
+                    // console.log(masc);
+                    // console.log("nullie" + (nullielist));
+                    // console.log(_3rdGenderList);
+                    });
+                console.log(years);
+                var trace1 = {
+                    x: years,
+                    y: masc,
+                    type: 'scatter',
+                    name:'Male'
+                };
+                var trace2 = {
+                    x: years,
+                    y: femme,
+                    type: 'scatter',
+                    'name':'Female'
+                };
+                // var trace3 = {
+                //     x: years,
+                //     y: nullielist,
+                //     type: 'scatter',
+                //     'name':'Unknown'
+                // };
+                var data = [trace1, trace2]; //,trace3];
+                Plotly.newPlot('line', data, {}, {showSendToCloud: true});  
+            }
+        else{
             years.forEach(date => {
                 let female = 0;
                 let male = 0;
                 let nullie = 0;
                 let _3rdGender = 0;
-                yearArray = currentStatus.filter(i => i.year == date)
+                yearArray = data.values.filter(i => i.year == date)
                 yearArray.forEach(j => {
                     var gender = j.gender;
                     var year = j.year;
@@ -63,7 +118,9 @@ function getPlot(status) {
             //     'name':'Unknown'
             // };
             var data = [trace1, trace2]; //,trace3];
-            Plotly.newPlot('line', data, {}, {showSendToCloud: true});  });
+            Plotly.newPlot('line', data, {}, {showSendToCloud: true});
+        } 
+        });
 }
 
 function optionChanged(status) {
@@ -86,20 +143,22 @@ function init() {
         // get the status data to the dropdwown menu
         // snippet used from: https://stackoverflow.com/questions/48279464/how-to-get-distinct-values-from-json-object-property-for-dropdown-options-using
         var unique = {};
-        var uniqueList = []
+        // var uniqueList = []
         data.values.forEach(function(name) {
             
             if (typeof unique[name['achievement status']] == "undefined") {
                 dropdown.append("option").text(name['achievement status']).property("value")
                 unique[name['achievement status']] = "";
-                uniqueList.push(name['achievement status']);
-                console.log(uniqueList)
+                // uniqueList.push(name['achievement status']);
+                
             }
-        console.log(unique)
+            
+            console.log(unique)
 
         //end snippet
 
         });
+        if (typeof unique[name['achievement status']] == "undefined") {dropdown.append("option").text("All").property('value')}
     });
 };
 getPlot("Nominee")
