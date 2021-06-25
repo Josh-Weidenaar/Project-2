@@ -69,11 +69,43 @@ function getInfo(id) {
 function init() {
     // select dropdown menu 
     var dropdown = d3.select("#selDataset");
+    // const years = { awardyear: function(){
+    //     var numberArray = [];
 
+    //     for(var i = 1; i <= 20; i++){
+    //         numberArray.push(i);
+    //     }; return numberArray}}
+    //     console.log(years)
     // read the data 
+    var years = [1991, 1992, 1993, 1994, 1995,1996,1997,1998,1999,
+        2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,
+        2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,
+        2020];
+    var femme = []
+        
     d3.json("static/data_collection/Beard_db_final.json").then((data)=> {
+        console.log("this dat")
         console.log(data)
+        console.log(data.values[15].gender);
 
+        years.forEach(date => {
+            let female = 0;
+            yearArray = data.values.filter(i => i.year == date)
+            yearArray.forEach(j => {
+                var gender = j.gender;
+                var year = j.year;
+
+                if (gender === "Female"){
+                    female += 1;}
+                });
+            femme.push(female);
+            console.log(femme);
+            console.log(female);
+            });
+
+
+        });
+        
         // get the id data to the dropdwown menu
         data.values.forEach(function(name) {
             dropdown.append("option").text(name['achievement status']).property("value");
@@ -82,8 +114,9 @@ function init() {
 //         // call functions to display the data and the plots
 //         getPlot(data['achievement status'][0]);
 //         getInfo(data.values[31]['achievement status']);
-    });
-}
+    };
+
+
 getInfo();
 
 init();
