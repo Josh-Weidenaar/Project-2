@@ -81,3 +81,11 @@ input {
   .active {
     background-color: #111;
   }
+
+li.dropdown-item {
+    float: initial;
+    margin-bottom: 10px; /* add spacing */
+  }
+.dropdown-menu {
+    max-width: 300px;
+}
